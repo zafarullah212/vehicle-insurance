@@ -43,5 +43,3 @@ class Automobile(BrowserUtils):
         self.driver.find_element(*self.annual_milage).send_keys("250")
 
         self.driver.find_element(*self.next).click()
-
-        time.sleep(2)
