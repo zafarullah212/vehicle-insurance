@@ -1,5 +1,8 @@
 from pageobjects.automobile.enter_insurant_data import EnterInsurantData
+from pageobjects.automobile.enter_product_data import ProductData
 from pageobjects.automobile.enter_vehicle_data import Automobile
+from pageobjects.automobile.price_options import PriceOption
+from pageobjects.automobile.send_quote import sendQuoute
 
 
 def test_automobile(BrowserIntance):
@@ -16,3 +19,17 @@ def test_automobile(BrowserIntance):
     enterInsurantobj = EnterInsurantData(driver)
     enterInsurantobj.enterInsurantData()
 
+    # Enter Product Data
+
+    productData = ProductData(driver)
+    productData.enter_product_data()
+
+    # Price Option
+
+    price_opt =  PriceOption(driver)
+    price_opt.ChoosePrice()
+
+    #send quote
+
+    send_quote =  sendQuoute(driver)
+    send_quote.send_quote()
