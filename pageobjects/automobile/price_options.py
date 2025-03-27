@@ -1,3 +1,4 @@
+import pytest
 import time
 
 from selenium.webdriver.common.by import By
@@ -13,6 +14,7 @@ class PriceOption(BrowserUtils):
         self.silver = (By.ID , "selectsilver")
         self.downloadquote = (By.ID , "downloadquote")
         self.next = (By.ID , "nextsendquote")
+        self.LoadingPDF = (By.ID , "LoadingPDF")
 
 
     def ChoosePrice(self):
@@ -20,12 +22,14 @@ class PriceOption(BrowserUtils):
         choose_price = self.driver.find_element(*self.silver)
         self.driver.execute_script("arguments[0].click();", choose_price)
 
-        #self.driver.find_element(*self.downloadquote).click()
+        self.driver.find_element(*self.downloadquote).click()
 
 
-       # wait = WebDriverWait(self.driver, 10)
-       # wait.until(expected_conditions.title_is("Send Quote"))
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(expected_conditions.invisibility_of_element(self.LoadingPDF))
 
-        self.driver.find_element(*self.next).click()
+        next = self.driver.find_element(*self.next)
+        self.driver.execute_script("arguments[0].click();", next)
+
 
 

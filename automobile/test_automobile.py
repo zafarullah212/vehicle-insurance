@@ -1,10 +1,12 @@
+import pytest
+
 from pageobjects.automobile.enter_insurant_data import EnterInsurantData
 from pageobjects.automobile.enter_product_data import ProductData
 from pageobjects.automobile.enter_vehicle_data import Automobile
 from pageobjects.automobile.price_options import PriceOption
 from pageobjects.automobile.send_quote import sendQuoute
 
-
+@pytest.mark.flaky(reruns=0, reruns_delay=5)
 def test_automobile(BrowserIntance):
 
     driver = BrowserIntance
